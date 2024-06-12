@@ -52,10 +52,12 @@ def number_template(n):
 
 @app.route('/number_odd_or_even/<int:n>')
 def number_odd_or_even(n):
-    """Render template based on conditional
-    """
-    path = '6-number_odd_or_even.html'
-    return render_template(path, n=n)
+    even_or_odd = "is even" if n % 2 == 0 else "is odd"
+    values = {
+        "number": n,
+        "even_or_odd": even_or_odd
+    }
+    return render_template('6-number_odd_or_even.html', n=n)
 
 if __name__ == '__main__':
     app.url_map.strict_slashes = False
